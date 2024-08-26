@@ -5,10 +5,15 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { StockModule } from './module/stock/stock.module';
 import { kafkaConfig, serviceName } from './common/constant/config.constant';
 import { KafkaConfig } from '@nestjs/microservices/external/kafka.interface';
+import { ConfigModule } from '@nestjs/config';
 
 @Global()
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: `${process.cwd()}/env/${process.env.NODE_ENV}.env`,
+      isGlobal: true,
+    }),
     ClientsModule.register([
       {
         name: serviceName.STOCK_PROCESSING_SVC_TCP,
