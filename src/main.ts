@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('/api');
   app.enableCors({
-    origin: 'http://localhost:3006',
+    origin: '*',
     credentials: true,
   });
   app.useGlobalPipes(
@@ -39,6 +39,10 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
   const port: number = Number(process.env.PORT) || 3000;
 
+  console.log(
+    '🚀 ~ bootstrap ~ process.env.STOCK_PROCESSING_HOST:',
+    process.env.STOCK_PROCESSING_HOST,
+  );
   await app
     .listen(port)
     .then(() => console.log('Server is running on port ' + port));

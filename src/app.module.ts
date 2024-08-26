@@ -19,8 +19,8 @@ import { ConfigModule } from '@nestjs/config';
         name: serviceName.STOCK_PROCESSING_SVC_TCP,
         transport: Transport.TCP,
         options: {
-          host: '127.0.0.1',
-          port: 3002,
+          host: process.env.STOCK_PROCESSING_HOST,
+          port: Number(process.env.STOCK_PROCESSING_PORT),
         },
       },
     ]),
