@@ -50,8 +50,7 @@ export class GetStockCardListResponse {
   totalPage: number;
 }
 
-export class StockCols {}
-export class GetStockChartResponse {
+export class StockCols {
   @ApiProperty()
   open: number;
   @ApiProperty()
@@ -62,4 +61,12 @@ export class GetStockChartResponse {
   close: number;
   @ApiProperty()
   date: string;
+}
+export class GetStockChartResponse {
+  @ApiProperty()
+  vol: number;
+  @ApiProperty()
+  growthRate: number;
+  @ApiProperty({ type: [StockCols] })
+  data: StockCols[];
 }

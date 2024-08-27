@@ -63,10 +63,10 @@ export class StockService {
       ),
     );
   }
-  async getStockHistory(query: GetStockHistoryQuery) {
+  async getStockChart(query: GetStockHistoryQuery) {
     return await firstValueFrom(
       this.stockProcessingTcp.send<
-        GetStockChartResponse[],
+        GetStockChartResponse,
         { query: GetStockHistoryQuery }
       >(
         {

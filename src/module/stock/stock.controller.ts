@@ -81,10 +81,10 @@ export class StockController {
   })
   @ApiQueryURL([{ name: 'ticker', example: 'ACB' }])
   @Get('/history')
-  async getStockHistory(
+  async getStockChart(
     @Query() query: GetStockHistoryQuery,
-  ): Promise<ResponseAPI<GetStockChartResponse[]>> {
-    const data = await this.stockService.getStockHistory(query);
+  ): Promise<ResponseAPI<GetStockChartResponse>> {
+    const data = await this.stockService.getStockChart(query);
     return { data, message: 'Get successfully' };
   }
 }
